@@ -1,0 +1,36 @@
+{
+    "name": "june",
+    "displayName": "June",
+    "description": "June and JASM Language Support",
+    "version": "0.0.2",
+    "publisher": "Constanze",
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "june",
+            "aliases": ["June", "june"],
+            "extensions": [".june"],
+            "configuration": "./language-configuration.json"
+        }, {
+            "id": "jasm",
+            "aliases": ["JASM", "jasm"],
+            "extensions": [".jasm"],
+            "configuration": "./jasm-config.json"
+        }],
+        "grammars": [{
+            "language": "june",
+            "scopeName": "source.june",
+            "path": "./syntaxes/june.tmLanguage.json"
+        }, {
+            "language": "jasm",
+            "scopeName": "source.jasm",
+            "path": "./syntaxes/jasm.tmLanguage.json"
+        }]
+    },
+    "repository": "https://github.com/june-language/vscode.git"
+}

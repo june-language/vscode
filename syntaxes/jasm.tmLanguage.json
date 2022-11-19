@@ -1,0 +1,76 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "JASM",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numerics"
+		},
+		{
+			"include": "#identifiers"
+		},
+		{
+			"include": "#line_comment"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.jasm",
+				"match": "(r#)?\\b(create|store|load|unload|jump|jumpTrue|jumpFalse|jumpTruePop|jumpFalsePop|jumpNil|bodyMarker|makeFunc|blkA|blkR|call|memberCall|attr|return|pushLoop|popLoop|continue|break|pushJump|pushJumpName|popJump)\\b"
+			}, {
+				"name": "constant.language.jasm",
+				"match": "\\b(true|false|nil)\\b"
+			}]
+		},
+		"strings": {
+			"patterns": [{
+				"name": "string.quoted.double.jasm",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [{
+					"name": "constant.character.escape.jasm",
+					"match": "\\\\u\\{[0-9A-Fa-f]{4}\\}"
+				}, {
+					"name": "constant.character.escape.jasm",
+					"match": "\\\\x([0-9A-Fa-f]{2})"
+				}, {
+					"name": "constant.character.escape.jasm",
+					"match": "\\\\[0-9a-zA-Z]"
+				}]
+			}]
+		},
+		"numerics": {
+			"patterns": [{
+				"match": "\\b([0-9]+(\\.[0-9]+)?)(_sz)?\\b",
+				"captures": {
+					"1": {
+						"name": "constant.numeric.jasm"
+					}
+				}
+			}]
+		},
+		"identifiers": {
+			"patterns": [{
+				"match": "([a-zA-Z][a-zA-Z0-9]+):",
+				"captures": {
+					"1": {
+						"name": "entity.name.function.jasm"
+					}
+				}
+			}]
+		},
+		"line_comment": {
+			"comment": "Single-line comment",
+			"name": "comment.line",
+			"begin": ";",
+			"end": "$"
+		}
+	},
+	"scopeName": "source.jasm"
+}
